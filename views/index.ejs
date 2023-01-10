@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <% let name = 'Abdan Zam Zam R' %>
+    <% function handleSubmit () { %>
+        console.log("name", name);
+    <% } %>
+
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <p><%= name %></p>
+
+    <a href="/users">Link to Users</a>
+
+    <button onclick="handleSubmit()">Button</button>
+
+    <% data.forEach((el, i) => { %>
+    <p><b>Name :</b> <%= el.name %> | <b>Age :</b> <%= el.age %></p>
+    <% }) %>
+
+  </body>
+</html>
