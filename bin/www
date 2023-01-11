@@ -11,7 +11,7 @@ const http = require('http');
 /**
  * WhatsApp Bot
  */
-const client = require('../services/whatsapp-bot');
+const client = require('../services/whatsapp');
 
 /**
  * Get port from environment and store in Express.
