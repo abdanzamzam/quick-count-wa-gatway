@@ -5,7 +5,7 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const { QuickCount } = require("../../models");
 
 const client = new Client({
-  authStrategy: new LocalAuth({ clientId: "client-one" }),
+  authStrategy: new LocalAuth({ clientId: "client-one" })
 });
 
 client.on("qr", (qr) => {
@@ -44,11 +44,9 @@ client.on("message", (message) => {
       try {
         const result = await QuickCount.findAll({
           where: {
-            tps: data,
-          },
+            tps: data
+          }
         });
-
-        console.log("result", result);
 
         if (result.length > 0) {
           await Promise.all(
@@ -94,7 +92,7 @@ client.on("message", (message) => {
         payload.push({
           tps: tps,
           partai: val.split(":")[0],
-          suara: val.split(":")[1],
+          suara: val.split(":")[1]
         });
       } else {
         tps = val;
@@ -108,31 +106,29 @@ client.on("message", (message) => {
             const result = await QuickCount.findOne({
               where: {
                 tps: val.tps,
-                partai: val.partai,
-              },
+                partai: val.partai
+              }
             });
 
             if (result) {
               // data already exists
-              console.log("data sudah ada");
               const data = await QuickCount.update(
                 {
-                  suara: val.suara,
+                  suara: val.suara
                 },
                 {
                   where: {
                     tps: val.tps,
-                    partai: val.partai,
-                  },
+                    partai: val.partai
+                  }
                 }
               );
             } else {
               // create data
-              console.log("data belum ada");
               const data = await QuickCount.create({
                 tps: val.tps,
                 partai: val.partai,
-                suara: val.suara,
+                suara: val.suara
               });
             }
           })
